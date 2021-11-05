@@ -1,18 +1,8 @@
 package base;
 
-public interface Zoologico {
+public abstract class Zoologico {
 
-	public int getEdad();
-
-	public void dormir();
-
-	public void comer();
-
-	public double getPeso();
-
-	public String getColor();
-
-	public double getLargoTrompa();
-
-	public double getAlto();
-}
+	protected Integer edad;
+	
+	public abstract Integer getEdad();
+	}

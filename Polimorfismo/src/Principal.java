@@ -1,9 +1,7 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import base.Zoologico;
-import derivada.CompararAnimales;
 import derivada.Elefante;
 import derivada.Leon;
 import derivada.Pajaro;
@@ -26,30 +24,32 @@ public class Principal {
 		animales.add(new Pajaro(220, 36));
 		animales.add(new Elefante(3.5, 70));
 
-		Collections.sort(animales, new CompararAnimales());
+		animales.sort((a1, a2) -> a1.getEdad().compareTo(a2.getEdad()));
 
 		for (Zoologico animal : animales) {
 			System.out.println(animal.getEdad());
 		}
 
-		Collections.sort(animales, new CompararAnimales().reversed());
+		animales.sort((a1, a2) -> a2.getEdad().compareTo(a1.getEdad()));
 
 		for (Zoologico animal : animales) {
 			System.out.println(animal.getEdad());
 		}
 
-		animales.stream()
-			.filter(leon -> leon instanceof Leon && leon.getPeso() > 200)
-			.forEach(System.out::println);
-		animales.stream()
-			.filter(tigre -> tigre instanceof Tigre && tigre.getColor().equalsIgnoreCase("oscuro"))
-			.forEach(System.out::println);
-		animales.stream()
-			.filter(pajaro -> pajaro instanceof Pajaro && pajaro.getAlto() > 200 && pajaro.getEdad() > 35)
-			.forEach(System.out::println);
-		animales.stream()
-			.filter(elefante -> elefante instanceof Elefante && elefante.getLargoTrompa() > 2)
-			.forEach(System.out::println);
+		for (Zoologico animal : animales) {
+			if (animal instanceof Leon && ((Leon) animal).getPeso() > 200) {
+				System.out.println(((Leon) animal).getPeso());
+			}
+			if (animal instanceof Tigre && ((Tigre) animal).getColor().equalsIgnoreCase("oscuro")) {
+				System.out.println(((Tigre) animal).getColor());
+			}
+			if (animal instanceof Pajaro && ((Pajaro) animal).getAlto() > 200 && ((Pajaro) animal).getEdad() > 35) {
+				System.out.println(((Pajaro) animal).getAlto() + ((Pajaro) animal).getEdad());
+			}
+			if (animal instanceof Elefante && ((Elefante) animal).getLargoTrompa() > 2) {
+				System.out.println(((Elefante) animal).getLargoTrompa());
+			}
+		}
 	}
 
 }
